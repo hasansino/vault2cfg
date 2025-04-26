@@ -1,4 +1,4 @@
-`````# vault2cfg
+# vault2cfg
 
 Library provides configuration binding to vault secrets.  
 Only string values are supported for the moment.
