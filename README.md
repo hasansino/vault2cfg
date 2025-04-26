@@ -19,20 +19,20 @@ type Config struct {
 }
 
 func main () {
-	vcl, err := libvault.New("localhost", nil)
-	if err != nil {
-		log.Fatal(err)
+    vcl, err := libvault.New("localhost", nil)
+    if err != nil {
+        log.Fatal(err)
     }
-	err = vcl.K8Auth("role", "serviceaccount", "mountpath", )
-	if err != nil {
-		log.Fatal(err)
-	}
-	data, err := vcl.Retrieve("secret/path")
-	if err != nil {
-		log.Fatal(err)
+    err = vcl.K8Auth("role", "serviceaccount", "mountpath", )
+    if err != nil {
+        log.Fatal(err)
     }
-	cfg := new(Config)
-	vault2cfg.Bind(cfg, data)
+    data, err := vcl.Retrieve("secret/path")
+    if err != nil {
+        log.Fatal(err)
+    }
+    cfg := new(Config)
+    vault2cfg.Bind(cfg, data)
 }
 
 ```
