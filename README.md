@@ -8,6 +8,8 @@ Library provides configuration binding to vault secrets.
 ~ $ go get github.com/hasansino/cfg2env
 ```
 
+## Example
+
 ```go
 package main
 
