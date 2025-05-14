@@ -1,0 +1,24 @@
+services:
+  init:
+    image: vault:1.13.3
+    environment:
+      VAULT_ADDR: http://vault:8200
+    volumes:
+      - ./secrets/group1.json:/group1.json:ro,z
+      - ./secrets/group2.json:/group2.json:ro,z
+    command: >
+      sh -c 'vault login qwerty &&
+             vault kv put secret/some-service/group1 @group1.json &&
+             vault kv put secret/some-service/group2 @group2.json'
+
+  vault:
+    image: vault:1.13.3
+    command: server -dev
+    cap_add:
+      - IPC_LOCK
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: qwerty
+    depends_on:
+      - init
+    ports:
+      - '8200:8200'

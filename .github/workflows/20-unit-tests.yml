@@ -1,4 +1,4 @@
-name: golang-unit-tests
+name: unit-tests
 
 on:
   push:
@@ -10,23 +10,12 @@ permissions:
   contents: read
 
 jobs:
-  test:
-
-    name: test
-
-    strategy:
-      matrix:
-        os: [ ubuntu-latest ]
-        go-version: [ '1.24' ]
-
-    runs-on: ${{ matrix.os }}
-
+  unit-tests:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: ${{ matrix.go-version }}
-          cache: false
-
+          go-version-file: 'go.mod'
       - run: go mod download
       - run: go test -v -race ./...
