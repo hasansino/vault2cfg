@@ -6,7 +6,7 @@ Supports only string values and anything that can be fmt.Sprintf-ed.
 ## Installation
 
 ```bash
-go get github.com/hasansino/cfg2env
+go get github.com/hasansino/vault2cfg/v2
 ```
 
 ## Example
