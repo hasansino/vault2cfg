@@ -1,4 +1,4 @@
-module github.com/hasansino/vault2cfg/v2
+module github.com/hasansino/vault2cfg
 
 go 1.24.2
 
